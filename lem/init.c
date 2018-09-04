@@ -6,7 +6,7 @@
 /*   By: agabrie <agabrie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:01:26 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/04 13:10:25 by agabrie          ###   ########.fr       */
+/*   Updated: 2018/09/04 15:55:44 by agabrie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,31 @@ t_link		*new_node(char *str)
 
 	link = (t_link*)malloc(sizeof(t_link));
 	link->str = str;
-	col_endl_fd(FMAG, link->str, 2);
 	link->next = NULL;
 	return (link);
 }
 
-void		push(t_link *format, char *str)
+void		push(t_farm *farm, char *str)
 {
 	t_link	*link;
 
-	col_endl_fd(FCYN, str, 2);
 	link = new_node(str);
-	col_endl_fd(FCYN, link->str, 2);
-	link->next = format;
-	format = link;
-	col_endl_fd(FYEL, format->str, 2);
+	//farm->format = link;
+	link->next = farm->format;
+	farm->format = link;
 }
 
 void	init(t_farm *farm)
 {
 	farm->format = NULL;
 	char *line;
-	line = malloc(100);
+	//line = malloc(100);
 	while (g_n_l(0, &line))
 	{
-		col_endl_fd(FYEL, line, 2);
-		push(farm->format, line);
-		col_endl_fd(FYEL, farm->format->str, 2);
+		//col_endl_fd(FYEL, line, 2);
+		push(farm, line);
+		//col_endl_fd(FYEL, farm->format->str, 2);
+		ft_strdel(&line);
 	}
 }
 
@@ -57,11 +55,12 @@ int find_ants(t_farm *farm)
 		col_endl_fd(FGRN, head->str, 2);
 		if(ft_strnequ("#", head->str, 1))
 		{
+			head = head->next;
 			continue ;
 		}
 		else if(ft_isnum(head->str))
 		{
-			col_endl_fd(FGRN, head->str, 2);
+			//col_endl_fd(FGRN, head->str, 2);
 			farm->ants = ft_atoi(head->str);
 			return(1);
 		}
@@ -69,6 +68,7 @@ int find_ants(t_farm *farm)
 		{
 			return(0);
 		}
+		head = head->next;
 	}
 	return (0);
 }
@@ -81,6 +81,8 @@ int main()
 	{
 		col_endl_fd(FRED, "Error!\nNo Ants", 2);
 	}
+	else
+		ft_nbrendl_fd(farm.ants, 2);
 	/*if(!find_rooms(&farm))
 	{
 		col_endl_fd(FRED, "Error!\nNo Rooms", 2);

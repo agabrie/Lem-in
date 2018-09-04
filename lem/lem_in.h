@@ -6,7 +6,7 @@
 /*   By: agabrie <agabrie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:02:02 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/04 13:05:44 by agabrie          ###   ########.fr       */
+/*   Updated: 2018/09/04 15:48:53 by agabrie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef	struct	s_link
 typedef struct	s_room
 {
 	char *name;
+    int     number;
 	t_point coords;
 	int		type;
 	int		*links; 
