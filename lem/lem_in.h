@@ -34,12 +34,16 @@ typedef struct	s_room
 	t_point coords;
 	int		type;
 	int		*links;
+	int		doors;
 	struct s_room *next;
 }				t_room;
+
+
 
 typedef struct	s_farm
 {
 	int ants;
 	t_link	*format;
 	t_room *rooms;
+	int num_rooms;
 }				t_farm;
