@@ -369,6 +369,20 @@ void	set_linksizes(t_farm *farm)
 	}
 }
 
+void	ft_putlist(t_farm *farm)
+{
+	t_link *head;
+
+	head = farm->format;
+
+	while(head)
+	{
+		col_endl_fd(FCYN, head->str, 1);
+		head = head->next;
+	}
+	ft_putendl_fd("", 1);
+}
+
 void	send_ants(t_farm *farm)
 {
 	t_room *h1;
@@ -388,23 +402,9 @@ void	send_ants(t_farm *farm)
 		col_endl_fd(FRED, "Error!\nNo valid Path", 2);
 		exit(0);
 	}
+	ft_putlist(farm);
 	col_str_fd(FGRN, "L1-", 1);
-	
 	col_endl_fd(FGRN, h2->name, 1);
-}
-
-void	ft_putlist(t_farm *farm)
-{
-	t_link *head;
-
-	head = farm->format;
-
-	while(head)
-	{
-		col_endl_fd(FCYN, head->str, 1);
-		head = head->next;
-	}
-	ft_putendl_fd("", 1);
 }
 
 int main()
@@ -427,6 +427,6 @@ int main()
 		col_endl_fd(FRED, "Error!\nNo Links", 1);
 		exit(0);
 	}
-	ft_putlist(&farm);
+	
 	send_ants(&farm);
 }
