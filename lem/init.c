@@ -292,6 +292,8 @@ int		is_valink(t_farm *farm, char **info)
 	t_room *head;
 
 	head = farm->rooms;
+	if(arrlen(info) != 2)
+		return (0);
 	while(head && !ft_strequ(head->name, info[0]))
 		head = head->next;
 	if(!head)
@@ -352,6 +354,8 @@ int	find_links(t_farm *farm)
 			if(!add_link(farm, head->str))
 				return(0);
 		}
+		else
+			return(0);
 		head = head->next;
 	}
 	return(1);
@@ -427,6 +431,5 @@ int main()
 		col_endl_fd(FRED, "Error!\nNo Links", 1);
 		exit(0);
 	}
-	
 	send_ants(&farm);
 }
