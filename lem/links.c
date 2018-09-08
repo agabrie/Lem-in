@@ -6,13 +6,13 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:38:07 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 07:39:18 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:42:42 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int ft_islink(char *str)
+int			ft_islink(char *str)
 {
 	char **form;
 
@@ -23,7 +23,7 @@ int ft_islink(char *str)
 		return (1);
 }
 
-int check_qual(t_farm *farm)
+int			check_qual(t_farm *farm)
 {
 	int val1;
 	int val2;
@@ -49,7 +49,7 @@ int check_qual(t_farm *farm)
 		return(1);
 }
 
-int		is_valink(t_farm *farm, char **info)
+int			is_valink(t_farm *farm, char **info)
 {
 	t_room *head;
 
@@ -68,7 +68,7 @@ int		is_valink(t_farm *farm, char **info)
 	return(1);
 }
 
-int	add_link(t_farm *farm, char *str)
+int			add_link(t_farm *farm, char *str)
 {
 	char **info;
 	t_room *h1;
@@ -91,7 +91,7 @@ int	add_link(t_farm *farm, char *str)
 	return(1);
 }
 
-int	find_links(t_farm *farm)
+int			find_links(t_farm *farm)
 {
 	t_link *head;
 
@@ -119,4 +119,3 @@ int	find_links(t_farm *farm)
 	}
 	return(1);
 }
-

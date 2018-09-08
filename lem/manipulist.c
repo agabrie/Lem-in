@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:26:59 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 04:28:06 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:45:38 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_qu		*create_q()
     return (q);
 }
 
-void pushq(t_qu *link, char *str)
+void		pushq(t_qu *link, char *str)
 {
     t_link *temp = new_node(str);
 	t_link *f;

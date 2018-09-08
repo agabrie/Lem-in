@@ -6,13 +6,13 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:32:51 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 07:39:06 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:44:18 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_room	*new_room(char *str, int type, int num_rooms)
+t_room		*new_room(char *str, int type, int num_rooms)
 {
 	char **info;
 	t_room *room;
@@ -27,7 +27,7 @@ t_room	*new_room(char *str, int type, int num_rooms)
 	return(room);
 }
 
-void create_room(t_farm *farm, int type, char *str,int num_rooms)
+void		create_room(t_farm *farm, int type, char *str,int num_rooms)
 {
 	t_room	*link;
 	t_room	*head;
@@ -44,7 +44,7 @@ void create_room(t_farm *farm, int type, char *str,int num_rooms)
 		farm->rooms = link;
 }
 
-int	ft_isroom(char *str)
+int			ft_isroom(char *str)
 {
 	char **form;
 	if(ft_islink(str))
@@ -61,7 +61,7 @@ int	ft_isroom(char *str)
 	}
 }
 
-int find_rooms(t_farm *farm)
+int			find_rooms(t_farm *farm)
 {
 	t_link *head;
 
