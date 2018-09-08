@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:01:26 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/08 04:42:37 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:21:57 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init(t_farm *farm)
 	farm->format = NULL;
 	farm->rooms = NULL;
 	farm->num_rooms = 0;
+	farm->type = REG;
 	char *line;
 	while (g_n_l(0, &line))
 	{

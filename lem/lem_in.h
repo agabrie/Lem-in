@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:02:02 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/08 05:06:54 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:20:00 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_room
 typedef struct	s_farm
 {
 	int ants;
+	int type;
 	t_link	*format;
 	t_room *rooms;
 	int num_rooms;
