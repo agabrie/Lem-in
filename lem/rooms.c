@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:32:51 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 04:37:22 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 05:44:45 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ int	ft_isroom(char *str)
 int find_rooms(t_farm *farm)
 {
 	t_link *head;
+	head = farm->format;
 	int type;
 
-	head = farm->format;
 	type = REG;
 
 	while(head && !ft_isnum(head->str))
 			head = head->next;
-	head = head->next;
+		head = head->next;
 
 	while(head)
 	{
@@ -125,7 +125,9 @@ int find_rooms(t_farm *farm)
 			continue;
 		}
 		else if(ft_islink(head->str))
+		{
 			break ;
+		}
 		else
 			return(0);
 		head = head->next;

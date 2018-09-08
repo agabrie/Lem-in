@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:38:07 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 04:46:37 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 05:32:45 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int ft_islink(char *str)
 		return 1;
 	}
 }
-
-
 
 int check_qual(t_farm *farm)
 {
@@ -120,8 +118,11 @@ int	find_links(t_farm *farm)
 			head = head->next;
 			continue ;
 		}
-		else if(!ft_islink(head->str) || !add_link(farm, head->str))
+		else if(ft_islink(head->str))
+		{
+			if(!add_link(farm, head->str))
 				return(0);
+		}
 		else
 			return(0);
 		head = head->next;

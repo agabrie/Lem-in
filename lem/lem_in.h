@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:02:02 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/08 04:55:40 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 05:06:54 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,8 @@ int	ft_isroom(char *str);
 int find_rooms(t_farm *farm);
 int find_ants(t_farm *farm);
 void	send_ants(t_farm *farm);
+t_link		*new_node(char *str);
+t_qu		*create_q();
+void pushq(t_qu *link, char *str);
+void		push(t_farm *farm, char *str);
 #endif
