@@ -6,10 +6,12 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:02:02 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/05 09:31:19 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 04:55:40 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LEM_IN_H
+# define LEM_IN_H
 #include "../libft/libft.h"
 #define START 0
 #define REG 1
@@ -38,8 +40,6 @@ typedef struct	s_room
 	struct s_room *next;
 }				t_room;
 
-
-
 typedef struct	s_farm
 {
 	int ants;
@@ -47,3 +47,21 @@ typedef struct	s_farm
 	t_room *rooms;
 	int num_rooms;
 }				t_farm;
+
+
+void	init(t_farm *farm);
+int arrlen(char **arr);
+void	ft_putlist(t_farm *farm);
+int ft_islink(char *str);
+int check_qual(t_farm *farm);
+int		is_valink(t_farm *farm, char **info);
+int	add_link(t_farm *farm, char *str);
+int	find_links(t_farm *farm);
+void	set_linksizes(t_farm *farm);
+t_room	*new_room(char *str, int type, int num_rooms);
+void create_room(t_farm *farm, int type, char *str,int num_rooms);
+int	ft_isroom(char *str);
+int find_rooms(t_farm *farm);
+int find_ants(t_farm *farm);
+void	send_ants(t_farm *farm);
+#endif

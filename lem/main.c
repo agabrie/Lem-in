@@ -1,50 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/04 08:01:26 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/08 04:42:37 by zee              ###   ########.fr       */
+/*   Created: 2018/09/08 04:41:22 by zee               #+#    #+#             */
+/*   Updated: 2018/09/08 04:43:05 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	init(t_farm *farm)
+int main()
 {
-	farm->format = NULL;
-	farm->rooms = NULL;
-	farm->num_rooms = 0;
-	char *line;
-	while (g_n_l(0, &line))
+	t_farm farm;
+
+	init(&farm);
+    if((find_ants(&farm) <= 0))
 	{
-		push(farm, line);
-		ft_strdel(&line);
+		col_endl_fd(FRED, "Error!\nNo Ants", 1);
+		exit(0);
 	}
-}
-
-int arrlen(char **arr)
-{
-	int len = 0;
-	while(arr[len])
+	if(!find_rooms(&farm))
 	{
-		len++;
+		col_endl_fd(FRED, "Error!\nNo Rooms", 1);
+		exit(0);
 	}
-	return(len);
-}
-
-void	ft_putlist(t_farm *farm)
-{
-	t_link *head;
-
-	head = farm->format;
-
-	while(head)
+	set_linksizes(&farm);
+	if(!find_links(&farm))
 	{
-		col_endl_fd(FCYN, head->str, 1);
-		head = head->next;
+		col_endl_fd(FRED, "Error!\nNo Links", 1);
+		exit(0);
 	}
-	ft_putendl_fd("", 1);
+	send_ants(&farm);
 }
