@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 08:01:26 by agabrie           #+#    #+#             */
-/*   Updated: 2018/09/08 07:21:57 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:38:44 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ void	init(t_farm *farm)
 	{
 		push(farm, line);
 		ft_strdel(&line);
+	}
+}
+
+void	set_linksizes(t_farm *farm)
+{
+	t_room *head;
+
+	head = farm->rooms;
+	while(head)
+	{
+		head->links = malloc(farm->num_rooms * sizeof(int));
+		head = head->next;
 	}
 }
 

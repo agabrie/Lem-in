@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:38:07 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 05:32:45 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:39:18 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,29 @@
 int ft_islink(char *str)
 {
 	char **form;
-	form=ft_strsplit(str, '-');
+
+	form = ft_strsplit(str, '-');
 	if(arrlen(form) != 2)
-	{
-		return 0;
-	}
+		return (0);
 	else
-	{
-		return 1;
-	}
+		return (1);
 }
 
 int check_qual(t_farm *farm)
 {
 	int val1;
 	int val2;
+	t_room *head;
+
 	val1 = 0;
 	val2 = 0;
-	t_room *head;
 	head = farm->rooms;
-
 	while(head)
 	{
 		if(head->type == START)
-		{
 			val1++;
-		}
 		else if(head->type == END)
-		{
 			val2++;
-		}
 		head = head->next;
 	}
 	if(val1 != 1 || val2 != 1)
@@ -114,30 +107,16 @@ int	find_links(t_farm *farm)
 	while(head)
 	{
 		if(ft_strnequ("#", head->str, 1))
-		{
 			head = head->next;
-			continue ;
-		}
-		else if(ft_islink(head->str))
+		if(ft_islink(head->str))
 		{
 			if(!add_link(farm, head->str))
 				return(0);
 		}
-		else
+		else if(!ft_islink(head->str))
 			return(0);
 		head = head->next;
 	}
 	return(1);
 }
 
-void	set_linksizes(t_farm *farm)
-{
-	t_room *head;
-
-	head = farm->rooms;
-	while(head)
-	{
-		head->links = malloc(farm->num_rooms * sizeof(int));
-		head = head->next;
-	}
-}
