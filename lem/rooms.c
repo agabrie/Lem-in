@@ -6,7 +6,7 @@
 /*   By: zee <zee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 04:32:51 by zee               #+#    #+#             */
-/*   Updated: 2018/09/08 07:44:18 by zee              ###   ########.fr       */
+/*   Updated: 2018/09/08 07:57:45 by zee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 t_room		*new_room(char *str, int type, int num_rooms)
 {
-	char **info;
-	t_room *room;
+	char	**info;
+	t_room	*room;
+
 	info = ft_strsplit(str, ' ');
 	room = (t_room *)malloc(sizeof(t_room));
 	room->name = info[0];
@@ -24,7 +25,7 @@ t_room		*new_room(char *str, int type, int num_rooms)
 	room->type = type;
 	room->doors = 0;
 	room->next = NULL;
-	return(room);
+	return (room);
 }
 
 void		create_room(t_farm *farm, int type, char *str,int num_rooms)
@@ -36,7 +37,7 @@ void		create_room(t_farm *farm, int type, char *str,int num_rooms)
 	head = farm->rooms;
 	if (farm->rooms)
 	{
-		while(head->next)
+		while (head->next)
 			head = head->next;
 		head->next = link;
 	}
@@ -46,18 +47,19 @@ void		create_room(t_farm *farm, int type, char *str,int num_rooms)
 
 int			ft_isroom(char *str)
 {
-	char **form;
+	char	**form;
+
 	if(ft_islink(str))
-		return 0;
+		return (0);
 	form = ft_strsplit(str, ' ');
-	if(arrlen(form) != 3)
+	if (arrlen(form) != 3)
 		return(0);
-	if(ft_isnum(form[1]) && ft_isnum(form[2]))
-		return(1);
+	if (ft_isnum(form[1]) && ft_isnum(form[2]))
+		return (1);
 	else
 	{
 		col_endl_fd(FRED, "Incorrect room format - coordinates", 2);
-		return(0);
+		return (0);
 	}
 }
 
@@ -66,26 +68,26 @@ int			find_rooms(t_farm *farm)
 	t_link *head;
 
 	head = farm->format;
-	while(head->next && !ft_isnum(head->str))
+	while (head->next && !ft_isnum(head->str))
 		head = head->next;
-	while(head)
+	while (head)
 	{
-		if(ft_strnequ("#", head->str, 1))
+		if (ft_strnequ("#", head->str, 1))
 		{
-			if(ft_strequ("##start", head->str))
+			if (ft_strequ("##start", head->str))
 				farm->type = START;	
-			if(ft_strequ("##end", head->str))
+			if (ft_strequ("##end", head->str))
 				farm->type = END;
 		}
-		if(ft_isroom(head->str))
+		if (ft_isroom(head->str))
 		{
 			farm->num_rooms++;
 			create_room(farm, farm->type, head->str, farm->num_rooms);
 			farm->type = REG;	
 		}
-		if(ft_islink(head->str))
+		if (ft_islink(head->str))
 			break ;
 		head = head->next;
 	}
-	return(farm->num_rooms);
+	return (farm->num_rooms);
 }
